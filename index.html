@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>3º PyData BSB | ptwiki2vec</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section><h1>Classificação Textual</h1></section>
+				<section>
+					<section>
+						<h2>NLP</h2>
+					</section>
+					<section>
+						<p>Para aprender mais sobre NLP veja o video do 2º <a href="https://youtu.be/Op36eWLVhwk?t=27m1s">PyDataBSB</a>
+					</section>
+					<section>
+						<h2>Bag of Words</h2>
+						<p>Uma das abordagens mais comuns para classificação textual</p>
+					</section>
+					<section>
+						<img src="img/The+Bag+of+Words+Representation.jpg" />
+					</section>
+					<section>
+						<p>O Problema:</p>
+						<p>"Eu gosto de pizza" == "Eu gosto de python"?</p>
+						<img class="fragment" src="img/distancia-strings.png" />
+					</section>
+				</section>
+				<section>
+					<section data-background="img/vector.gif">
+						<h2>Vetores de Palavras</h2>
+						<p>(não esse vetor...)
+					</section>
+					<section>
+						<h3>Como funciona?</h3>
+						<img src="img/anim00.gif" />
+					</section>
+					<section>
+						<p>Direção representa conceitos</p>
+						<img src="img/vectors.gif" />
+					</section>
+					<section>
+						<p>Mais exemplos:</p>
+						<img src="img/word2vec_chart.jpg" />
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>ptwiki2vec</h2>
+					</section>
+					<section>
+						<h3>O que eu usei</h3>
+						<img src="img/codigo01.png" />
+					</section>
+					<section>
+						<p>Preprocessamento</p>
+						<img src="img/coffee.gif" />
+					</section>
+					<section>
+						<p>Treinando os modelos</p>
+						<img src="img/codigo02.png" />
+						<p><small>i7, 16gb ram, SSD 256gb</small></p>
+					</section>
+					<section>
+						<h3>4 horas depois...</h3>
+						<img src="img/matematico.gif" />
+					</section>
+					<section>
+						<p>Similaridade:</p>
+						<img src="img/codigo03.png" />
+					</section>
+					<section>
+						<p>Operações:</p>
+						<img src="img/codigo04.png" />
+					</section>
+					<section>
+						<p>Inferência:</p>
+						<img src="img/codigo05.png" />
+					</section>
+
+				</section>
+
+				<section>
+					<section data-background="img/exmachina2.gif"><h1>Resultados</h1></section>
+					<section data-background="#333333"><p>Mais de <a href="https://www.kaggle.com/iriomk/brazilian-federal-legislative-activity" target="_blank">100.000 projetos de lei</a> analisados em 1h</p></section>
+					<section data-background="#bbbbbb">
+						<blockquote cite="#">
+							&ldquo;Altera o Decreto-Lei nº 3.689, de 3 de outubro de 1941 - Código de Processo Penal, para possibilitar a
+							suspensão do cargo, emprego ou função pública durante o processo que julgar crime praticado por funcionário público.&rdquo;
+						</blockquote>
+						<table>
+							<thead>
+								<tr>
+									<th>Tópico</th>
+									<th>Similaridade</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Desobediência</td>
+									<td>0.7920684218406677</td>
+								</tr>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section data-background="#bbbbbb">
+						<blockquote cite="#">
+							&ldquo;Insere causa de aumento de pena nos crimes de estupro e de estupro de vulnerável, consistente na prática
+							da conduta por duas ou mais pessoas - "estupro coletivo.&rdquo;
+						</blockquote>
+						<table>
+							<thead>
+								<tr>
+									<th>Tópico</th>
+									<th>Similaridade</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Maus-tratos</td>
+									<td>0.7736256122589111</td>
+								</tr>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section data-background="#bbbbbb">
+						<blockquote cite="#">
+							&ldquo;Dispõe sobre a obrigatoriedade da inclusão do suco de laranja nos cardápios do programa de alimentação escolar.&rdquo;
+						</blockquote>
+						<table>
+							<thead>
+								<tr>
+									<th>Tópico</th>
+									<th>Similaridade</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Merenda</td>
+									<td>0.6975668668746948</td>
+								</tr>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section data-background="#bbbbbb">
+						<blockquote cite="#">
+							&ldquo;Dispõe sobre a aposentadoria em tempo inferior para bailarinos, artistas circenses, artistas e cantores líricos,
+							músicos, instrumentistas, coristas e atores, regulamentando o artigo 202, inciso II, da Constituição Federal.&rdquo;
+						</blockquote>
+						<table>
+							<thead>
+								<tr>
+									<th>Tópico</th>
+									<th>Similaridade</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Lista de emendas à constituição brasileira de 1988</td>
+									<td>0.5848907232284546</td>
+								</tr>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section>
+						<p>Download dos resultados em <a href="https://drive.google.com/open?id=1bCafrrl8QqA_RsdKcNsw7zkHAMw6V7d6">https://drive.google.com/open?id=1bCafrrl8QqA_RsdKcNsw7zkHAMw6V7d6</a>
+					</section>
+
+				</section>
+
+				<section data-background="img/source.gif"><h1>Dúvidas?</h1></section>
+
+				<section>
+					<h1>Desafio</h1>
+					<p>Apliquem o mesmo raciocínio no seguinte conjunto de dados:</p>
+					<p><a href="http://dados.gov.br/dataset/projetos-de-pesquisa" target="_blank">http://dados.gov.br/dataset/projetos-de-pesquisa</a>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
