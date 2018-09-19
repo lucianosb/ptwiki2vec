@@ -26,6 +26,8 @@ Agora, podemos treinar o modelo com o comando train:
 Esta etapa durou 6h40min no PC que usei para treinar este modelo. Treinar na
 nuvem com mais CPUs irá agilizar esse processo.
 
+O comando **make model** irá executar o download e treinamento consecutivamente.
+
 ## Executar
 
 Para carregar o modelo pre-treinado, e utilizá-lo como uma API REST:
