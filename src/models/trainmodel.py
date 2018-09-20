@@ -3,6 +3,19 @@ from gensim.corpora.wikicorpus import WikiCorpus
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument
 from gensim.utils import simple_preprocess
 import multiprocessing
+import errno
+import os
+import time
+
+path = os.getcwd()
+print("The current working directory is %s" % path)
+try:
+    os.mkdir('models')
+except OSError as exc:
+    if exc.errno != errno.EEXIST:
+        raise
+    pass
+
 
 wiki = WikiCorpus('data/ptwiki-latest-pages-articles.xml.bz2')
 
@@ -41,4 +54,6 @@ model.delete_temporary_training_data(
                                     keep_doctags_vectors=True,
                                     keep_inference=True)
 
-model.save('models/wiki-latest')
+timestr = time.strftime("%Y%m%d-%H%M%S")
+filepath = 'models/wiki-'+timstr
+model.save(filepath)
